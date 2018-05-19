@@ -53,6 +53,7 @@ Question(
 
 function populateQuestion(question){
     $('.question').empty();
+    setTimer();
     $('.question').html(
         '<h4>'+question.question+'</h4>'+
         '<p data-answerA="'+question.a+'">'+question.a+'</p>'+
@@ -61,15 +62,16 @@ function populateQuestion(question){
         '<p data-answerD="'+question.d+'">'+question.d+'</p>'
     )
 }
-
-for(var i = 0; i < questionArray.length; i++){
+function setTimer(){
     var counter = 10;
     var timer = setInterval(function(){
-        $('#timer').text('Time remaining: '+counter);
-        if (counter === 0) {
+        $('#timer').text('Time Remaining: '+counter);
+        if (counter === 0){
             $('#timer').text('Times up!');
+            $('.question').empty();
             clearInterval(timer);
         }
         counter--;
     }, 1000);
 }
+populateQuestion(questionArray[0]);
