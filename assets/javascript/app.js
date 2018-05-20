@@ -57,6 +57,43 @@ Question(
     'Guilford Courthouse, North Carolina',
 )
 
+// Q5
+Question(
+    'Who led the Bostonians at the Boston Tea Party?',
+    'Samuel Adams',
+    'Willam Prescott',
+    'Paul Revere',
+    'Benjamin Franklin',
+    'Samuel Adams'
+)
+
+Question(
+    'What European countries did the American Colonies receive crucial aid from?',
+    'Germany and Russia',
+    'Italy and Greece',
+    'Sweden and Norway',
+    'Spain and France',
+    'Spain and France'
+)
+
+Question(
+    'What were the Townshend Acts?',
+    'Tax\'s on sugar',
+    'Dutie\'s on glass, lead, paint, paper, and tea',
+    'Laws against murder',
+    'Laws against freedom of religion',
+    'Dutie\'s on glass, lead, paint, paper, and tea'
+)
+
+Question(
+    'What year was the Stamp Act crisis?',
+    '1765',
+    '1770',
+    '1759',
+    '1760',
+    '1765'
+)
+
 function populateQuestion(question) {
     $('.question').empty();
     if(questionArray.length === 0){
@@ -72,17 +109,17 @@ function populateQuestion(question) {
             }
         }
         $('.question').html(
-            '<p>Correct Answers: '+correct+'</p>'+
-            '<p>Incorrect Answers: '+wrong+'</p>'
+            '<h2>Correct Answers: '+correct+
+            '<h2>Incorrect Answers: '+wrong
         )
     }
     else{
         $('.question').html(
             '<h4>' + question.question + '</h4>' +
-            '<p class="choice" data-answer="' + question.a + '">' + question.a + '</p>' +
-            '<p class="choice" data-answer="' + question.b + '">' + question.b + '</p>' +
-            '<p class="choice" data-answer="' + question.c + '">' + question.c + '</p>' +
-            '<p class="choice" data-answer="' + question.d + '">' + question.d + '</p>'
+            '<button type="button" class=" btn btn-info choice" data-answer="' + question.a + '">' + question.a + '</button> ' +
+            '<button type="button" class=" btn btn-info choice" data-answer="' + question.b + '">' + question.b + '</button> ' +
+            '<button type="button" class=" btn btn-info choice" data-answer="' + question.c + '">' + question.c + '</button> ' +
+            '<button type="button" class=" btn btn-info choice" data-answer="' + question.d + '">' + question.d + '</button> '
         )
         $('.choice').on('click', function(){
             userAnswer.push($(this).data('answer'));
@@ -111,10 +148,4 @@ function startTimer() {
 function stopTimer(){
     clearInterval(timer);
 }
-
-$('.start').on('click', startTimer);
-$('.stop').on('click', stopTimer);
-$('.clear').on('click', function(){
-    count = 10;
-});
 populateQuestion(questionArray[0]);
