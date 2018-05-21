@@ -10,3 +10,7 @@
 .question p:hover{
     background-color: rgba(0,255,0, .3);
 }
+.questionDisplay{
+    margin: 20px;
+    border-top: 2px solid black;
+}

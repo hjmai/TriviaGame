@@ -1,4 +1,5 @@
 var questionArray = [];
+var displayArray = [];
 var answerArray = [];
 var userAnswer = [];
 var timer;
@@ -15,6 +16,7 @@ function Question(question, a, b, c, d, answer) {
     form.answer = answer;
     answerArray.push(form.answer);
     questionArray.push(form);
+    displayArray.push(form);
 }
 
 // Q1
@@ -85,15 +87,6 @@ Question(
     'Dutie\'s on glass, lead, paint, paper, and tea'
 )
 
-Question(
-    'What year was the Stamp Act crisis?',
-    '1765',
-    '1770',
-    '1759',
-    '1760',
-    '1765'
-)
-
 function populateQuestion(question) {
     $('.question').empty();
     if(questionArray.length === 0){
@@ -112,6 +105,17 @@ function populateQuestion(question) {
             '<h2>Correct Answers: '+correct+
             '<h2>Incorrect Answers: '+wrong
         )
+        for(var i = 0; i < displayArray.length; i++){
+            var questionDiv = $('<div class="questionDisplay col-md-12">');
+            var yourAnswer = $('<div class="your-answer col-md-6">');
+            var correctAnswer = $('<div class="correct-answer col-md-6">');
+            questionDiv.html('<h2>'+displayArray[i].question+'</h2>');
+            yourAnswer.html('<p style="font-weight: bold">Your Answer</p><p>'+userAnswer[i]+'</p>');
+            correctAnswer.html('<p style="font-weight: bold">Correct Answer</p><p>'+answerArray[i]+'</p>');
+            $('.display').append(questionDiv);
+            $('.display').append(yourAnswer);
+            $('.display').append(correctAnswer);
+        }
     }
     else{
         $('.question').html(
